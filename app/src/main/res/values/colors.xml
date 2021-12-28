@@ -25,6 +25,8 @@
     <color name="G14">#0D395D</color>
 
     <color name="main_color">#2490F7</color>
+    <color name="hint_color">#CED7DE</color>
+    <color name="transparent">#00000000</color>
 
 </resources>
 
