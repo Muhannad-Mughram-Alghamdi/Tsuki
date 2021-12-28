@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:startColor="@color/cardViewBackground1"
+                      android:endColor="@color/cardViewBackground2"
+                      android:angle="13"/>
+        </shape>
+    </item>
+</selector>

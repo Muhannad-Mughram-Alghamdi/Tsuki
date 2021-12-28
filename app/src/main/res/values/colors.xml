@@ -28,5 +28,8 @@
     <color name="hint_color">#CED7DE</color>
     <color name="transparent">#00000000</color>
 
+    <color name="cardViewBackground1">#CED6F1</color>
+    <color name="cardViewBackground2">#4468E5</color>
+
 </resources>
 
