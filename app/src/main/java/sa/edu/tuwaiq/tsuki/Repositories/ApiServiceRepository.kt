@@ -30,7 +30,7 @@ class ApiServiceRepository(val context : Context) { // Context :
     // shared preference VVV <- we save the token inside it // it contain two things SP direct
     private val sharedPref = context.getSharedPreferences(SHARED_PREF_FILE,Context.MODE_PRIVATE)
 //--------------------------------------------------------------------------------------------------
-    suspend fun getAnime() = retrofitApi.getAnime()
+    //suspend fun getAnime() = retrofitApi.getAnime("id")
 //////////////////////////////////[2]     Manage the token    [2]//////////////////////////////////
 
 //--------------------------------------------------------------------------------------------------
