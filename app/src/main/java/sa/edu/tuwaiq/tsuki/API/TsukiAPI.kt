@@ -15,6 +15,8 @@ import sa.edu.tuwaiq.tsuki.Model.CharactersModel.Characters.Characters_Model
 import sa.edu.tuwaiq.tsuki.Model.CharactersModel.Manga_Characters.Manga_Characters_Model
 import sa.edu.tuwaiq.tsuki.Model.CommentsModel.Comments.Comments_Model
 import sa.edu.tuwaiq.tsuki.Model.CommentsModel.Comments_Likes.Comments_Likes_Model
+import sa.edu.tuwaiq.tsuki.Model.IdentityModel.Login.Login_Body
+import sa.edu.tuwaiq.tsuki.Model.IdentityModel.Login.Login_Model
 import sa.edu.tuwaiq.tsuki.Model.MangaModel.Manga.Manga_Model
 import sa.edu.tuwaiq.tsuki.Model.MangaModel.Manga_Chapters.Manga_Chapters_Model
 import sa.edu.tuwaiq.tsuki.Model.MangaModel.Manga_Trending.Manga_Trending_Model
@@ -46,6 +48,12 @@ import sa.edu.tuwaiq.tsuki.Model.UsersModel.ProfileLinkSites.Profile_Link_Sites_
 interface TsukiAPI { // HTTP request we receive HTTP respond
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
+/////////////////////////////////////.:~Identity Model~:.///////////////////////////////////////////
+//////////////////////////////////////.:~Login Model~:./////////////////////////////////////////////
+    @GET("https://kitsu.io/api/oauth/token")
+    suspend fun userLogin(
+    @Body loginBody: Login_Body
+    ): Response<Login_Model>
 //////////////////////////////////////.:~Anime Model~:./////////////////////////////////////////////
 ////\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
