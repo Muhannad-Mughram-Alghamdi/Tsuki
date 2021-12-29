@@ -9,8 +9,12 @@ import sa.edu.tuwaiq.tsuki.Model.IdentityModel.Login.Login_Body
 //import sa.edu.tuwaiq.tsuki.API.TsukiAPI
 import java.lang.Exception
 
-// the REPOSITORY :
-
+/**
+ * A Repository is a class that abstracts access to multiple data sources (Room db, Network).
+ * It is a suggested best practice for code separation and architecture. A Repository class handles data operations
+ * */
+//--------------------------------------------------------------------------------------------------
+// the REPOSITORY contain :
 //1-//builder retrofit service
 //2-//fun "get product" and gave it the token
 //3-//&& the companion object to make single object for the repository
@@ -23,14 +27,33 @@ private const val BASE_URL = "https://kitsu.io/api/edge"
 class ApiServiceRepository(val context : Context) { // Context :
 //--------------------------------------------------------------------------------------------------
 //////////////////////////////////[1] retrofit service[1]///////////////////////////////////////////
+    /***
+     *
+     * To work with Retrofit you basically need the following three classes:
+    1 - Model class which is used as a JSON model
+    2 - Interfaces that define the possible HTTP operations
+    3 - Retrofit.Builder class - Instance which uses the interface and the Builder API
+        to allow defining the URL end point for the HTTP operations.
+     * */
+//--------------------------------------------------------------------------------------------------
+    // Retrofit.Builder
+    // And we need to specify a factory for deserializing the response using the Gson library
     private val retrofitService = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
+    //  Builder API
+    // You can then use the create method from the retrofitService to get an instance of the api.
     private val retrofitApi = retrofitService.create(TsukiAPI::class.java)
-    // shared preference VVV <- we save the token inside it // it contain two things SP direct
+    /*
+    * SharedPreferences offers a framework to save persistent data in key-value pairs.(Token)
+    * It works for any primitive data type (meaning booleans, ints, longs, floats, and strings).
+    * Which also means that it’s pretty simple to work with.* */
     private val sharedPref = context.getSharedPreferences(SHARED_PREF_FILE,Context.MODE_PRIVATE)
-//--------------------------------------------------------------------------------------------------
+    /**
+     * Calling getSharedPreferences() enables you to retrieve a file by name,
+     * which means you can have multiple files.* */
+//==================================================================================================
 /////////////////////////////////// Identity Model /////////////////////////////////////////////////
     suspend fun login(loginBody: Login_Body) = retrofitApi.userLogin(loginBody)
 //////////////////////////////////// Anime Model ///////////////////////////////////////////////////
@@ -79,7 +102,15 @@ class ApiServiceRepository(val context : Context) { // Context :
 //--------------------------------------------------------------------------------------------------
 //==================================================================================================
 ///////////////////////////////////[3]companion object[3]///////////////////////////////////////////
-
+    companion object{
+        private var instance : ApiServiceRepository? = null
+        fun init(context: Context){
+            if(instance == null)
+                instance = ApiServiceRepository(context)
+        }
+        fun get() : ApiServiceRepository {
+            return instance ?: throw Exception("ApiServiceRepository must be initialized") // ?: -> || -> or
+        }
+    }
 //==================================================================================================
 }
-
