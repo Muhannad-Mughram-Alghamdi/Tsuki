@@ -1,10 +1,11 @@
-package sa.edu.tuwaiq.tsuki
+package sa.edu.tuwaiq.tsuki.View.Main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import sa.edu.tuwaiq.tsuki.R
 
 class TitlesFragment : Fragment() {
 

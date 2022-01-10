@@ -33,19 +33,22 @@ class HomeFragment : Fragment() {
         sharedPrefEditor = sharedPref.edit()
     }
 //==================================================================================================
+// "onCreateView" :(the method you initialize and create all your objects, including your TextView)
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater,container,false) //binding in fragment
-        return binding.root //binding in fragment
+//        binding = FragmentHomeBinding.inflate(inflater,container,false) //binding in fragment
+//        return binding.root //binding in fragment
+        return inflater.inflate(R.layout.fragment_search, container, false)
     }
 //==================================================================================================
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //<<"onViewCreated" is called immediately after "onCreateView" :(the method you initialize and create all your objects, including your TextView)
-        val homeRecyclerView : RecyclerView = view.findViewById(R.id.homeRecyclerView)
-        val homeAdapter = HomeRecyclerViewAdapter(list)
-        homeRecyclerView.adapter = homeAdapter
+//<<"onViewCreated" is called immediately after
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        val homeRecyclerView : RecyclerView = view.findViewById(R.id.homeRecyclerView)
+//        val homeAdapter = HomeRecyclerViewAdapter(HomeViewModel())
+//        homeRecyclerView.adapter = homeAdapter
 //--------------------------------------------------------------------------------------------------
 
 

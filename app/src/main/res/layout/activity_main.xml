@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradiant"
     tools:context=".View.MainActivity">
 
     <!--sa.edu.tuwaiq.tsuki.View.Main.Home.HomeFragment-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/BottomNavigationView"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="350dp"
         android:layout_height="56dp"
         android:background="@drawable/navigation_bar"

@@ -21,7 +21,7 @@ import java.lang.Exception
 
 const val SHARED_PREF_FILE = "Auth" // we can make a file that contain all the names then call them when needed
 //const val TOKEN_KEY = "token"
-private const val BASE_URL = "https://kitsu.io/api/edge"
+private const val BASE_URL = "https://kitsu.io"
 
 
 class ApiServiceRepository(val context : Context) { // Context :
