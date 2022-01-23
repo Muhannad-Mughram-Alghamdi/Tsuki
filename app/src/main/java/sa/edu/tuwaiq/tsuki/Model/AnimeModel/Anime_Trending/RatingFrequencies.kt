@@ -1,8 +1,11 @@
 package sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class RatingFrequencies(
     @SerializedName("10")
     val x10: String,
@@ -42,4 +45,4 @@ data class RatingFrequencies(
     val x8: String,
     @SerializedName("9")
     val x9: String
-)
+): Parcelable

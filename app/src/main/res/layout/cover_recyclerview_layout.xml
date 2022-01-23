@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/loading_image" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_height="30dp"
         android:gravity="center"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/Anime_cover_watching_home_imageView"
         app:layout_constraintEnd_toEndOf="@+id/Anime_cover_watching_home_imageView"
         app:layout_constraintStart_toStartOf="@+id/Anime_cover_watching_home_imageView"

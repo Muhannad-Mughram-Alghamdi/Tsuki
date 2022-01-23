@@ -14,49 +14,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tsuki">
+        <activity
+            android:name=".View.Main.Identity.FacebookActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+        <activity
+            android:name=".View.Splash"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
 
-<!--/////////////////////////////////////////////////////////////////////////////////////////////-->
-        <activity android:name=".View.Splash"
-            android:theme = "@style/SplashTheme"
-            android:exported="true">
-<!--/////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--///////////////////////////////////Make splash activity Main/////////////////////////////////-->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
+            <!-- ///////////////////////////////////Make splash activity Main///////////////////////////////// -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////-->
+        </activity> <!-- ///////////////////////////////////////////////////////////////////////////////////////////// -->
         <activity
             android:name=".View.MainActivity"
-            android:theme = "@style/Theme.AppCompat.DayNight.NoActionBar"
-            android:exported="true">
-        </activity>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////-->
-<!--/////////////////////////////////////OAuth2 configuration ///////////////////////////////////-->
-        <!--
-        This activity declaration is merged with the version from the library manifest.
-        It demonstrates how an https redirect can be captured, in addition to or instead of
-        a custom scheme.
-        Generally, this should be done in conjunction with an app link declaration for Android M
-        and above.
-        The declaration from the library can be completely replaced by adding
-        tools:node="replace"
-        To the list of attributes on the activity element.
-        -->
-<!--        <activity-->
-<!--            android:name="net.openid.appauth.RedirectUriReceiverActivity"-->
-<!--            tools:node="replace"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW"/>-->
-<!--                <category android:name="android.intent.category.DEFAULT"/>-->
-<!--                <category android:name="android.intent.category.BROWSABLE"/>-->
-<!--                <data android:scheme="https://kitsu.io/api/"-->
-<!--                android:host="sa.edu.tuwaiq.tsuki"-->
-<!--                android:path="/oauth2redirect"/>-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-<!--/////////////////////////////////////////////////////////////////////////////////////////////-->
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
+
 </manifest>

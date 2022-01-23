@@ -1,8 +1,11 @@
 package sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Attributes(
     @SerializedName("abbreviatedTitles")
     val abbreviatedTitles: List<String>,
@@ -22,10 +25,6 @@ data class Attributes(
     val createdAt: String,
     @SerializedName("description")
     val description: String,
-    @SerializedName("endDate")
-    val endDate: Any,
-    @SerializedName("episodeCount")
-    val episodeCount: Any,
     @SerializedName("episodeLength")
     val episodeLength: Int,
     @SerializedName("favoritesCount")
@@ -54,8 +53,6 @@ data class Attributes(
     val subtype: String,
     @SerializedName("synopsis")
     val synopsis: String,
-    @SerializedName("tba")
-    val tba: Any,
     @SerializedName("titles")
     val titles: Titles,
     @SerializedName("totalLength")
@@ -66,4 +63,4 @@ data class Attributes(
     val userCount: Int,
     @SerializedName("youtubeVideoId")
     val youtubeVideoId: String
-)
+): Parcelable

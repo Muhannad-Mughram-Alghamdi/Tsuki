@@ -59,7 +59,7 @@ class ApiServiceRepository(val context : Context) { // Context :
 //////////////////////////////////// Anime Model ///////////////////////////////////////////////////
     suspend fun getAnime(id : Int) = retrofitApi.getAnime(id)
     suspend fun getAnimeEpisodes(id : Int) = retrofitApi.getAnimeEpisodes(id)
-    suspend fun getAnimeTrending(id : Int) = retrofitApi.getAnimeTrending(id)
+    suspend fun getAnimeTrending() = retrofitApi.getAnimeTrending()
 //////////////////////////////////// Manga Model ///////////////////////////////////////////////////
     suspend fun getManga(id : Int) = retrofitApi.getManga(id)
     suspend fun getMangaChapters(id : Int) = retrofitApi.getMangaChapters(id)
@@ -102,11 +102,14 @@ class ApiServiceRepository(val context : Context) { // Context :
 //--------------------------------------------------------------------------------------------------
 //==================================================================================================
 ///////////////////////////////////[3]companion object[3]///////////////////////////////////////////
+    /***
+     * this companion object for restricts the instantiation of a class to one "single" instance.
+     * This is useful when exactly one object is needed to coordinate actions across the system.
+     * */
     companion object{
         private var instance : ApiServiceRepository? = null
         fun init(context: Context){
-            if(instance == null)
-                instance = ApiServiceRepository(context)
+            if(instance == null) instance = ApiServiceRepository(context)
         }
         fun get() : ApiServiceRepository {
             return instance ?: throw Exception("ApiServiceRepository must be initialized") // ?: -> || -> or

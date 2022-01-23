@@ -1,20 +1,19 @@
 package sa.edu.tuwaiq.tsuki.View.Adaptersimport
 
-import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
-import sa.edu.tuwaiq.tsuki.R
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime.Anime_Model
-import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime.Data
-import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime.Titles
-import sa.edu.tuwaiq.tsuki.Model.CategoriesModel.Categories.Anime
-import sa.edu.tuwaiq.tsuki.Model.CategoriesModel.Categories.Catagories_Model
+import com.squareup.picasso.Picasso
+import sa.edu.tuwaiq.tsuki.R
+import sa.edu.tuwaiq.tsuki.View.Main.Detials.AnimeDetailsFragment
 import sa.edu.tuwaiq.tsuki.View.Main.Home.HomeViewModel
 
 private const val TAG = "HomeRecyclerViewAdapter"
@@ -34,8 +33,9 @@ private const val TAG = "HomeRecyclerViewAdapter"
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 ///\\//\\//\\//\\//\\//\\//\\//\\//\\// Adapter Class \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
-class HomeRecyclerViewAdapter(private val context : Context, var allCategory: List<Catagories_Model>) :
+class HomeRecyclerViewAdapter(val homeViewModel : HomeViewModel, val view : View) :
     RecyclerView.Adapter<HomeRecyclerViewAdapter.HomeViewHolder>() {
+        var animeDetailsFragment = AnimeDetailsFragment()
         /**
          * DiffUtil is a utility class that can calculate the difference between two lists and
             * output a list of update operations that converts the first list into the second one.
@@ -46,11 +46,13 @@ class HomeRecyclerViewAdapter(private val context : Context, var allCategory: Li
         //------------------------------------------------------------------------------------------
         // it check the "list" data is different than the one inside the database
         // the deffer acts as middleman that check the data then give it to the list, it make it own animation
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Catagories_Model>() {
-            override fun areItemsTheSame(oldItem: Catagories_Model, newItem: Catagories_Model): Boolean {
-                return oldItem.data == newItem.data
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data>() {
+            override fun areItemsTheSame(oldItem: sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data, newItem: sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data
+            ): Boolean {
+                return oldItem.attributes == newItem.attributes
             }
-            override fun areContentsTheSame(oldItem: Catagories_Model, newItem: Catagories_Model): Boolean {
+            override fun areContentsTheSame(oldItem: sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data, newItem: sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data
+            ): Boolean {
                 return oldItem == newItem
             }
         }
@@ -67,15 +69,11 @@ class HomeRecyclerViewAdapter(private val context : Context, var allCategory: Li
         Log.d(TAG,"OnCreateViewHolder() Called")
         return HomeViewHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.cardview_of_covers_fragment_layout,
+                R.layout.cover_recyclerview_layout,
                 parent,
                 false
             )
         )
-//--------------------------------------------------------------------------------------------------
-        //nested recyclerview
-        return HomeViewHolder(LayoutInflater.from(context)
-        .inflate(R.layout.cardview_of_covers_fragment_layout,parent,false))
     }
 //--------------------------------------------------------------------------------------------------
     /**
@@ -86,6 +84,19 @@ class HomeRecyclerViewAdapter(private val context : Context, var allCategory: Li
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         Log.d(TAG,"onBindViewHolder() Called Position : $position")
         val item = differ.currentList[position]
+        val bundle = Bundle()
+
+        holder.TitleText.text = item.attributes.titles.en
+        Picasso.get().load(item.attributes.posterImage.medium).into(holder.MediaCover)
+        val youtube =  "https://www.youtube.com/embed/${item.attributes.youtubeVideoId}"
+        holder.itemView.setOnClickListener {
+            bundle.putString("details1",item.attributes.titles.en)
+            bundle.putString("details2",item.attributes.description)
+            bundle.putString("details3",youtube)
+
+
+            it.findNavController().navigate(R.id.action_homeFragment_to_animeDetailsFragment1,bundle)
+        }
     }
 //--------------------------------------------------------------------------------------------------
     /**
@@ -95,18 +106,20 @@ class HomeRecyclerViewAdapter(private val context : Context, var allCategory: Li
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
-    fun submitList(list: List<Catagories_Model>) {
-        differ.submitList(list)
-    }
+//==================================================================================================
+        fun submitList(list : List<sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data>){
+            differ.submitList(list) //submitList will add data inside the the DB
+            //^^^ this line/fun is instead of VVV
+            //clear
+            //add
+        }
+//==================================================================================================
 //==================================================================================================
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 ////\\//\\//\\//\\//\\//\\//\\//\\// ViewHolder Class \\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\
     class HomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        //nested recyclerview
-        var listName : TextView? = null
-        init {
-            listName = itemView.findViewById(R.id.list_name_textView)
-        }
+        val MediaCover : ImageView = itemView.findViewById(R.id.Anime_cover_watching_home_imageView)
+        val TitleText : TextView = itemView.findViewById(R.id.Anime_Title_watching_list_home_textview)
     }
 }

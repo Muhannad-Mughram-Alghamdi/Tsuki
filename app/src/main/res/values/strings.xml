@@ -12,4 +12,8 @@
     <string name="Email">Email</string>
     <string name="Watching">Watching</string>
     <string name="View_All"><![CDATA[View All >]]></string>
+    <string name="Trending">Trending</string>
+    <string name="facebook_app_id">272542038139509</string>
+    <string name="fb_login_protocol_scheme">fb272542038139509</string>
+    <string name="Welcom_login">Wellcome to Tsuki Anime Tracker</string>
 </resources>

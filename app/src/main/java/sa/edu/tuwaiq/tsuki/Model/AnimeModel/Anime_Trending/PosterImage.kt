@@ -1,8 +1,11 @@
 package sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class PosterImage(
     @SerializedName("large")
     val large: String,
@@ -16,4 +19,4 @@ data class PosterImage(
     val small: String,
     @SerializedName("tiny")
     val tiny: String
-)
+): Parcelable

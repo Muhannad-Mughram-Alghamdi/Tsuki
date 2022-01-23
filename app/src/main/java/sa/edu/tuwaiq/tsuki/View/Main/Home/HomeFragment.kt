@@ -7,30 +7,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.fragment.findNavController
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import sa.edu.tuwaiq.tsuki.R
 import sa.edu.tuwaiq.tsuki.Repositories.SHARED_PREF_FILE
 import sa.edu.tuwaiq.tsuki.View.Adaptersimport.HomeRecyclerViewAdapter
-import sa.edu.tuwaiq.tsuki.databinding.FragmentHomeBinding
-
-private val list = listOf<HomeViewModel>()
 
 class HomeFragment : Fragment() {
 //==================================================================================================
 //==================================================================================================
-    private lateinit var binding:FragmentHomeBinding //binding in fragment
-    private lateinit var homeAdapter: HomeRecyclerViewAdapter //Adapter
-//--------------------------------------------------------------------------------------------------
-    private lateinit var sharedPref: SharedPreferences
-    private lateinit var sharedPrefEditor: SharedPreferences.Editor
+    private var allAnime = listOf<sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data>() // ??
+//==================================================================================================
+    private lateinit var homeAdapter: HomeRecyclerViewAdapter
+    private val homeViewModel: HomeViewModel by activityViewModels()
 //==================================================================================================
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true) // Report that this fragment would like to participate in populating the options menu by receiving a call to onCreateOptionsMenu(Menu, MenuInflater) and related methods.
-        sharedPref = requireActivity().getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-        sharedPrefEditor = sharedPref.edit()
+    // Report that this fragment would like to participate in populating the options menu
+    // by receiving a call to onCreateOptionsMenu(Menu, MenuInflater) and related methods.
+    homeViewModel.callAnimeTrending()
     }
 //==================================================================================================
 // "onCreateView" :(the method you initialize and create all your objects, including your TextView)
@@ -39,19 +34,23 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        binding = FragmentHomeBinding.inflate(inflater,container,false) //binding in fragment
-//        return binding.root //binding in fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 //==================================================================================================
-//<<"onViewCreated" is called immediately after
+//"onViewCreated" is called immediately after onCreatedView
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        val homeRecyclerView : RecyclerView = view.findViewById(R.id.homeRecyclerView)
-//        val homeAdapter = HomeRecyclerViewAdapter(HomeViewModel())
-//        homeRecyclerView.adapter = homeAdapter
+
+        val homeRecyclerView : RecyclerView = view.findViewById(R.id.homeRecyclerView)
+        homeAdapter = HomeRecyclerViewAdapter(HomeViewModel(),requireView())
+        homeRecyclerView.adapter = homeAdapter
+        observers()
 //--------------------------------------------------------------------------------------------------
-
-
     }
 //==================================================================================================
+    fun observers(){
+        homeViewModel.animeTrendingLiveData.observe(viewLifecycleOwner,{
+            homeAdapter.submitList(it)
+            allAnime = it
+        })
+    }
 }

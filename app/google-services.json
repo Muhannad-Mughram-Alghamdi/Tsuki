@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "703270666876",
+    "project_id": "tsukifacebooklogin",
+    "storage_bucket": "tsukifacebooklogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703270666876:android:57c481404b0d0a886cbff9",
+        "android_client_info": {
+          "package_name": "sa.edu.tuwaiq.tsuki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703270666876-rqk2lh7gck3lb6mj9fioda5kbvbc3eb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcdFjLVboFOxOQ-Thw-Z8ZLoKLB3AnZMI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703270666876-rqk2lh7gck3lb6mj9fioda5kbvbc3eb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

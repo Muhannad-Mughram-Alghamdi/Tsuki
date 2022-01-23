@@ -1,8 +1,11 @@
 package sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class Titles(
     @SerializedName("en")
     val en: String,
@@ -12,4 +15,4 @@ data class Titles(
     val enUs: String,
     @SerializedName("ja_jp")
     val jaJp: String
-)
+): Parcelable

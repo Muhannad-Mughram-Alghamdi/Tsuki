@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import sa.edu.tuwaiq.tsuki.R
 
 class CommunityFragment : Fragment() {
@@ -22,4 +23,12 @@ class CommunityFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_community, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val search : SearchView = view.findViewById(R.id.CommunitySearchBar_SearchView)
+
+        search.setOnSearchClickListener {
+
+        }
+    }
 }

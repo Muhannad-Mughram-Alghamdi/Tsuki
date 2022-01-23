@@ -8,6 +8,8 @@ import retrofit2.http.Path
 import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime.*
 import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Episodes.Anime_Episodes_Model
 import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Anime_Trending_Model
+import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Attributes
+import sa.edu.tuwaiq.tsuki.Model.AnimeModel.Anime_Trending.Data
 import sa.edu.tuwaiq.tsuki.Model.CategoriesModel.Categories.Catagories_Model
 import sa.edu.tuwaiq.tsuki.Model.CategoriesModel.CategoriesFavorites.Categories_Favorite_Model
 import sa.edu.tuwaiq.tsuki.Model.CharactersModel.Anime_Characters.Anime_Characters_Model
@@ -70,11 +72,9 @@ interface TsukiAPI { // HTTP request we receive HTTP respond
     ): Response<Anime_Episodes_Model>
 //--------------------------------------------------------------------------------------------------
 ///////////////////////////////////.:~Anime Trending~:./////////////////////////////////////////////
-    @GET("https://kitsu.io/api/edge/trending/anime/{id}")
+    @GET("/api/edge/trending/anime")
     suspend fun getAnimeTrending(
-        @Path("id") id:Int
     ): Response<Anime_Trending_Model>
-//==================================================================================================
 //////////////////////////////////////.:~Manga Model~:./////////////////////////////////////////////
 ////\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//
 //\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\//\\

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import sa.edu.tuwaiq.tsuki.R
 import sa.edu.tuwaiq.tsuki.Repositories.ApiServiceRepository
+import sa.edu.tuwaiq.tsuki.View.Main.Identity.FacebookActivity
 
 class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +16,7 @@ class Splash : AppCompatActivity() {
         ApiServiceRepository.init(this)
 //==================================================================================================
         setContentView(R.layout.activity_splash)
-        val intent = Intent(this,MainActivity::class.java)
-
+        val intent = Intent(this, FacebookActivity::class.java)
         object : CountDownTimer(1500,1000) {
             override fun onTick(millisUntilFinished: Long) {}
             override fun onFinish() {
