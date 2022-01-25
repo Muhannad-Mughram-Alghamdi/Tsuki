@@ -6,78 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".View.Main.Detials.AnimeDetailsFragment">
 
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="412dp"
-        android:layout_height="243dp"
-        android:layout_marginBottom="223dp"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.007">
-
-    </WebView>
-
-    <LinearLayout
-        android:id="@+id/linearLayout3"
-        android:layout_width="412dp"
-        android:layout_height="215dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView">
-
-        <ImageView
-            android:id="@+id/AnimePoster_ImageView"
-            android:layout_width="132dp"
-            android:layout_height="190dp"
-            android:layout_marginTop="27dp"
-            android:layout_marginEnd="23dp"
-            android:layout_marginBottom="100dp"
-            android:src="@drawable/loading_image" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="278dp"
-            android:layout_height="223dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/AnimeTitleEn_TextView"
-                android:layout_width="260dp"
-                android:layout_height="60dp"
-                android:textSize="25dp"
-                app:layout_constraintBottom_toTopOf="@+id/scrollView3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </LinearLayout>
-    </LinearLayout>
-
     <ScrollView
-        android:id="@+id/scrollView3"
-        android:layout_width="412dp"
-        android:layout_height="265dp"
-        android:layout_marginTop="8dp"
+        android:id="@+id/scrollView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/AnimeDiscreption_TextView"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="471dp"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/AnimeTitleEn_TextView"
-            app:layout_constraintTop_toBottomOf="@+id/webView" />
+            android:orientation="vertical">
+
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="412dp"
+                android:layout_height="178dp">
+
+            </WebView>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="411dp"
+                android:layout_height="212dp"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/AnimePoster_ImageView"
+                    android:layout_width="129dp"
+                    android:layout_height="190dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="100dp"
+                    android:src="@drawable/loading_image" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/AnimeTitleEn_TextView"
+                        android:layout_width="260dp"
+                        android:layout_height="60dp"
+                        android:textSize="15dp"
+                        app:layout_constraintBottom_toTopOf="@+id/scrollView3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/animeTitlejaJP_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/animeTitleEnJp_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/AnimeDiscreption_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:textSize="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/WatchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Watch_Anime" />
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

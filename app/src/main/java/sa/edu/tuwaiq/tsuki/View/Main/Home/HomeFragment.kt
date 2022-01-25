@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         val homeRecyclerView : RecyclerView = view.findViewById(R.id.homeRecyclerView)
-        homeAdapter = HomeRecyclerViewAdapter(HomeViewModel(),requireView())
+        homeAdapter = HomeRecyclerViewAdapter(HomeViewModel(),requireView(),requireContext())
         homeRecyclerView.adapter = homeAdapter
         observers()
 //--------------------------------------------------------------------------------------------------

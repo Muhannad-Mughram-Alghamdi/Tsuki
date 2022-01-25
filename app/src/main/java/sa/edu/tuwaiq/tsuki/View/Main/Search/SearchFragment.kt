@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import sa.edu.tuwaiq.tsuki.R
 
 class SearchFragment : Fragment() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,7 @@ class SearchFragment : Fragment() {
 //==================================================================================================
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//        val searchItem = view.findViewById(R.id.AnimeMangaSearchBar_SearchView)
+//        val searchView = searchItem.actionView as SearchView //search bar
     }
 }
